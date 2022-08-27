@@ -64,6 +64,17 @@ function App(){
     setValue('');
   }
 
+  /*
+  Romove todos
+  */
+  const removeTodo = e => {
+    const index = Number(e.target.id);
+    let temp = [...todos];
+    temp.splice(index,1);
+    setTodos(temp);
+  }
+
+
 
   return(
     /*
@@ -87,7 +98,14 @@ function App(){
 
     */
     <>
-      {todos.map((todo, i) => <div className='todo' key={i}>{todo.text}</div>)}
+      {todos.map((todo, i) =>
+        <div
+          className='todo'
+          key={i}
+          id={i}
+          onClick={removeTodo}
+        >{todo.text}</div>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
