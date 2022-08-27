@@ -99,12 +99,7 @@ function App(){
     */
     <>
       {todos.map((todo, i) =>
-        <div
-          className='todo'
-          key={i}
-          id={i}
-          onClick={removeTodo}
-        >{todo.text}</div>
+        <div className="todo" key={i} id={i} onClick={removeTodo}>{todo.text}</div>
       )}
       <form onSubmit={handleSubmit}>
         <input
