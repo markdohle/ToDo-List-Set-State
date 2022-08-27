@@ -1,15 +1,16 @@
 /*
-Now, let's get started by creating the function that has our top component. We will call it 'App()'. And inside of it, we're simply going to 'return()' our JSX. And for now, I'm going to make it empty.
+Creating the App function that has the top component.
+Return() the JSX.
 */
 function App(){
   /*
-  Add our initial state with useState.
+  Add initial state with useState.
   
-  Create variable 'todos' and the function that is going to allow us to set that. Use 'set' naming convention.Call the function 'setTodos'.
+  Create variable 'todos' and the function to set it. Use 'set' naming convention. Call the function 'setTodos'.
   
-  Use the 'useState' feature to set our initial state, an array of objects. And I'm going to paste the array of objects. All the objects have 'text:', which is the description of the ToDo. And then they have a Boolean, 'true' or 'false' 'isCompleted'. All of them are initially 'false'.
-
-
+  Use the 'useState' feature to set initial state, an array of objects.
+  
+  All the objects have 'text:', which is the description of the ToDo. And then they have a Boolean, 'true' or 'false' 'isCompleted'. All of them are initially 'false'.
   */
   const [todos, setTodos] = React.useState([
     {
@@ -24,109 +25,50 @@ function App(){
       text: 'build todo app',
       isCompleted: false,
     }        
-  ])
+  ]);
   /*
-  Create a manged variable, which is a variable that is in state.
+  Use ES6 to write the addTodo function so that todos can be accessed by handleSubmit in the form.js file.
 
-  The variable 'value' is input from the user, which is set by setValue.
-
-  Inititialize useState('') with an empty string.
+  Set parameter = 'text' which will be the value from the form.
   */
-  const [value, setValue] = React.useState('');
-
-  /*
-  handleSubmit function uses ES6 syntax.
-
-  The function checks for an existing value. The constructs a new list, which is the existing list plus the new Todo. Set the newList using 'setTodos' and clear out the form.
-
-  Take the event 'e'.
-
-  Prevent the default to refresh the page.
-
-  Check the value of the field and if empty, then stop the function by doing nothing.
-
-  Construct newToDos.  Get access to the current list and add the new 'text': value.
+  const addTodo = text => {
+    /*Get access to the current list and add the new 'text' value.
   
-  'isCompleted' is initialized to 'false' because whenever a todo is first created, it has not yet been done. So, that's a good assumption. Set Todos to the '(newTodos)' to go from the old state or the current state to the new state. Then clear out our form, which is 'setValue( '' )'.
-  */
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    const newTodos = [
-      ...todos,
-      {
-        text: value,
-        isCompleted: false
-      }
-    ];
-    //set to
+    'isCompleted' is initialized to 'false' because whenever a todo is first created, it has not yet been done. Set Todos to the '(newTodos)'. Go from the old state or the current state to the new state.
+    */
+    const newTodos = [...todos, {text, isCompleted:false}];
     setTodos(newTodos);
-    setValue('');
   }
-
-  /*
-  Remove todos
-  */
+  //remove todos triggered by the onClick associated with the form.
   const removeTodo = e => {
-    const index = Number(e.target.id);
-    let temp = [...todos];
-    temp.splice(index,1);
+    var index = Number(e.target.id);
+    let temp = [...todos];    
+    temp.splice(index, 1);
     setTodos(temp);
   }
-
-
-
-  return(
-    /*
-    Loop through all the todos and create a '<div>' tag for each one, where the 'key' is the index value and the 'text' that is set inside the div.
+  /*
+  Loop through all the todos and create a '<div>' tag for each one, where the 'key' is the index value and the 'text' that is set inside the div.
     
-    Inside of the component, start with an empty tag, just a fragment (<></>).
+  Inside of the component, start with an empty tag, just a fragment (<></>).
 
-    Create the JSX so that we can display the objects in the browser.
+  Create the JSX so that we can display the objects in the browser.
     
-    Add an expression {} to take a look at the 'todos', 'map()' to them. Use parameters from the map callback signature to call each 'todo' that is passed in '. The index is 'i'. The syntax is ES6 for functions. Use a div tag with 4 attributes
+  Add an expression {} to take a look at the 'todos', 'map()' to them. Use parameters from the map callback signature to call each 'todo' that is passed in '. The index is 'i'. The syntax is ES6 for functions. Use a div tag with 4 attributes
     1. key={i} to capture the index for creating the list 
     2. className="todo" for css style
     3. id={i} to capture the index for the item that was clicked on to remove.
     4. onClick={removeTodo} to call the function triggered by the onClick.
     
-    Add another expression {todo.text} for the text of the todo that shows up in the div.
+  Add another expression {todo.text} for the text of the todo that shows up in the div.
 
-    Add todos to the list with a form and handle the submit event to add todos to the state in the application.
-
-    Value is being updated by the 'onChange' event. The submit function is handled it with submit.
-
-    Created a form with an onSubmit attribute to map the onChange event(e) to the handleSubmit function. The onChange attribute has an input element where the user can enter that value.
-    
-    There are 5 attributes added to the input tag within the form tag.
-    
-    When that form is submitted, the event is handled event with 'handleSubmit' function. 
-
-    */
+  Add <todoForm/> component for the the form with an attribute for the addTodo function.
+  */
+  return(
     <>
-      {todos.map((todo, i) =>
-        <div
-          className="todo"
-          key={i}
-          id={i}
-          onClick={removeTodo}
-          >{todo.text}
-        </div>
-        )}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          //className attribute to capture css style
-          className="input"
-          //value attribute to capture the value defined within the state of the application.
-          value={value}
-          //placeholder attribute to intruct the user of the application
-          placeholder="Add ToDo ..."
-          //onChange event attribute with an expression function to use event(e) to access and set the value of the input.
-          onChange={e => setValue(e.target.value)}
-
-          />
-      </form>
+      {todos.map((todo, i) => (
+        <div className="todo" key={i} id={i} onClick={removeTodo}>{todo.text}</div>
+      ))}
+      <TodoForm addTodo={addTodo} />
     </>
   );
 }
