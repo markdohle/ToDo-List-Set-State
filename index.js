@@ -65,7 +65,7 @@ function App(){
   }
 
   /*
-  Romove todos
+  Remove todos
   */
   const removeTodo = e => {
     const index = Number(e.target.id);
@@ -84,7 +84,13 @@ function App(){
 
     Create the JSX so that we can display the objects in the browser.
     
-    Add an expression {} to take a look at the 'todos', 'map()' to them. Use parameters from the map callback signature to call each passed in 'todo'. The index is 'i'. The syntax is ES6 for functions. Use a div tag with a key '<div key={index}>' to list each of those items. The value of the key is index. Add another expression {todo.text} for the text of the todo that shows up in the div.
+    Add an expression {} to take a look at the 'todos', 'map()' to them. Use parameters from the map callback signature to call each 'todo' that is passed in '. The index is 'i'. The syntax is ES6 for functions. Use a div tag with 4 attributes
+    1. key={i} to capture the index for creating the list 
+    2. className="todo" for css style
+    3. id={i} to capture the index for the item that was clicked on to remove.
+    4. onClick={removeTodo} to call the function triggered by the onClick.
+    
+    Add another expression {todo.text} for the text of the todo that shows up in the div.
 
     Add todos to the list with a form and handle the submit event to add todos to the state in the application.
 
@@ -99,8 +105,14 @@ function App(){
     */
     <>
       {todos.map((todo, i) =>
-        <div className="todo" key={i} id={i} onClick={removeTodo}>{todo.text}</div>
-      )}
+        <div
+          className="todo"
+          key={i}
+          id={i}
+          onClick={removeTodo}
+          >{todo.text}
+        </div>
+        )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
