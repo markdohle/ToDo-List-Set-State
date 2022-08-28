@@ -146,7 +146,7 @@ Use this link to format your README. You can create ```quote code like this``` o
 
 # Styles CSS
 
-Grid: MIT xPro Week 8; Video 8-7 (6:08) Holy Grail
+[Airbnb CSS-in-JavaScript Style Guide](https://airbnb.io/javascript/css-in-javascript/)
   
 # Local Server
 ```npx http-server```
