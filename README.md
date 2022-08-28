@@ -1,14 +1,16 @@
 # ToDo-List-Set-State
 
-MIT xPro React Week 4 - Todo List
+# MIT xPro React Week 4 - Todo List
 
 This program uses compoments to refactor the todo list into reusable peices.
 
-#App Component
+# App [Components and Props](https://reactjs.org/docs/components-and-props.html)
 
 Create the App function that has the top component. Return() the JSX.
 
 Use the ```useState``` feature to set initial state, an array of objects.
+
+[setState](https://reactjs.org/docs/react-component.html#setstate)
 
 Use ES6 to write the addTodo function so that todos can be accessed by handleSubmit in the form.js file.
 
@@ -17,8 +19,8 @@ Remove todos triggered by the onClick in the Todo component.
 Loop through all the todos and create a ```<div>```tag for each one, where the 'key' is the index value and the 'text' that is set inside the div.
 
 Creat divs to add styling
-1.```className="app"```
-2.```className="todo-list"```
+1. ```className="app"```
+2. ```className="todo-list"```
 
 Create the JSX so that we can display the objects in the browser.
 
@@ -35,7 +37,7 @@ There are two components pulled in from separate files for cleaner code.
 
 Add to the 'DOM'.
 
-Use ```ReactDOM.render()```. 
+Use ```ReactDOM.render()```. [render()](https://reactjs.org/docs/react-component.html#render) 
 
 Pass the 1st parameter ```< App/ >``` component.
 
@@ -45,16 +47,16 @@ Pass the second parameter 'document.getElementById'.
 
 The 'Id' of that element is ```('root')```.
 
-#Todo Component
+# Todo [Components and Props](https://reactjs.org/docs/components-and-props.html)
 
 Break out the Todo() functionality and put it into a component to list each of the items on our Todo list.
 3 parameters
-1.index function
-2.todo function
-3.remove function
+1. index function
+2. todo function
+3. remove function
 Create the handle() function for the onClick event. I'm simply going to 'remove', and pass the '(index);'. This is the function that is dedicated to removing an item from the Todo list.
 
-#TodoForm Component
+# TodoForm [Components and Props](https://reactjs.org/docs/components-and-props.html)
 
 Create a manged variable, which is a variable that is in state.
 
@@ -84,22 +86,15 @@ Create a form with an onSubmit attribute to map the onChange event(e) to the han
     
 There are 5 attributes added to the input tag within the form tag.
 
-```type="text"```
-```className="input"``` capture css style
-```value={value}``` capture the value defined within the state of the application.
-```placeholder="Add Todo..."``` intruct the user of the application
-```onChange={e => setValue(e.target.value)}``` event attribute with an expression function to use event(e) to access and set the value of the input.
+1. ```type="text"```
+2. ```className="input"``` capture css style
+3. ```value={value}``` capture the value defined within the state of the application.
+4. ```placeholder="Add Todo..."``` intruct the user of the application
+5. ```onChange={e => setValue(e.target.value)}``` event attribute with an expression function to use event(e) to access and set the value of the input.
     
 When that form is submitted, the event is handled event with 'handleSubmit' function.
 
-
-[Components and Props](https://reactjs.org/docs/components-and-props.html)
-
-[render()](https://reactjs.org/docs/react-component.html#render)
-
-[setState](https://reactjs.org/docs/react-component.html#setstate)
-
-The following links are from the MIT xPro REACT Week 3 lessons.
+# The following links are from the MIT xPro REACT Week 4 lessons.
 
 Creating, Reading, Updating, and Deleting([CRUD](https://medium.com/geekculture/whats-a-crud-app-e5a29cce03b5)]) records within your application.
 
