@@ -1,5 +1,5 @@
 /*
-Creating the App function that has the top component.
+Create the App function that has the top component.
 Return() the JSX.
 */
 function App(){
@@ -57,7 +57,7 @@ function App(){
   Add an expression {} to take a look at the 'todos', 'map()' to them. Use parameters from the map callback signature to call each 'todo' that is passed in '. The syntax is ES6 for functions. Embed the Todo component into the expression.
 
   There are two components pulled in from separate files for cleaner code.
-    1. Todo with 3 attributes;
+    1. Todo with 4 attributes;
       
       index={i} - The index value is {i}.
       
@@ -69,7 +69,7 @@ function App(){
 
     2. TodoForm with 1 attribute
 
-      addTodo={addTodo} The value 
+      addTodo={addTodo} 
   */
   return(
     <div className="app">
@@ -94,8 +94,6 @@ Target the element within my HTML that I'm going to pass all this content into.
 Pass the second parameter 'document.getElementById'.
 
 The 'Id' of that element is '('root')'.
-
-Inside of the component, enter an empty tag, just a fragment.
 */
 ReactDOM.render(
   <App/>,
